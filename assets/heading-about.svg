@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="66" viewBox="0 0 860 66">
   <rect x="0" y="0" width="860" height="66" fill="#0A0E18"/>
-  <rect x="3" y="3" width="854" height="60" fill="#1F2A44"/>
-  <rect x="3" y="3" width="854" height="4" fill="#2A3A5E"/>
+  <rect x="3" y="3" width="854" height="60" fill="#FFFFFF"/>
+  <rect x="3" y="3" width="854" height="4" fill="#E8ECF5"/>
   <rect x="6" y="6" width="848" height="54" fill="none" stroke="#0A0E18" stroke-width="1"/>
-  <text x="24" y="42" font-size="26" font-family="'Monaco','Menlo','Consolas','Courier New',monospace" font-weight="bold" fill="#F5EFE0">ABOUT ME · 关于我</text>
+  <text x="24" y="42" font-size="26" font-family="'Monaco','Menlo','Consolas','Courier New',monospace" font-weight="bold" fill="#1F2A44">ABOUT ME · 关于我</text>
   <rect x="24" y="50" width="256" height="5" fill="#E85D4A"/>
-  <text x="828" y="40" font-size="13" font-family="'Monaco','Menlo','Consolas','Courier New',monospace" font-weight="bold" fill="#FF8A7A" text-anchor="end">HI, NICE TO MEET YOU!</text>
+  <text x="828" y="40" font-size="13" font-family="'Monaco','Menlo','Consolas','Courier New',monospace" font-weight="bold" fill="#E85D4A" text-anchor="end">HI, NICE TO MEET YOU!</text>
 </svg>

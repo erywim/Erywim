@@ -23,7 +23,7 @@ README 全部由 GitHub 支持的静态格式构成（Markdown + `<img>` 引用�
 - **hero.svg**：手绘波浪边框 + 像素画（机器人/火箭/爱心/雏菊/闪星）+ 手写标题。**文字由脚本从数据生成**（`tech-stack.json` 的 `hero` 段，见下节）；装饰层是固定模板。
 - **关于我**：Markdown 段落（用户可直接改文字）。
 - **card-fullstack.svg**：技术栈卡片（单张「全栈 · Fullstack」，按分类分组：AI 应用 / 后端 / 前端 / 中间件 / 并发与网络），结构 = 手绘波浪边框 + 左侧导轨（"FS" 大字 + 像素图标 + 波浪线）+ 轻微旋转的贴纸式标签 chips。**这张卡片不是手写的，由脚本从数据生成**（见下节）。
-- **divider.svg**（8-bit 日式 RPG 像素场景分隔条：深蓝夜空 + 月亮/云/星星 + 中央像素城堡 + 两侧雪山 + 草地；纯 `<rect>` 像素绘制，出现 2 次）、**heading-about.svg**、**heading-stack.svg**、**heading-stats.svg**、**signoff.svg**（这些是手工绘制的静态 SVG，不参与数据生成）。
+- **divider.svg**（8-bit 日式 RPG 像素场景分隔条：深蓝夜空 + 月亮/云/星星 + 中央像素城堡 + 两侧雪山 + 草地；纯 `<rect>` 像素绘制，出现 2 次）、**heading-about.svg**、**heading-stack.svg**、**signoff.svg**（这些是手工绘制的静态 SVG，不参与数据生成）。
 
 ## SVG 生成器（hero + 卡片）
 
@@ -35,7 +35,7 @@ README 全部由 GitHub 支持的静态格式构成（Markdown + `<img>` 引用�
 - JSON 结构：每张卡片一个 key（key 决定输出文件名 `card-<key>.svg`）→ `{rail, title, en, accent, icon, blocks[]}`；`rail` 是左侧导轨大字（本仓库用 `"FS"`）；`en` 为空字符串则不显示右上角小字；`icon` 可选 `chip|star|db|heart`；block 用 `label/color/tags`，或 `note`（渲染成整条横幅）。
 - 数据校验：生成后跑 `xmllint --noout assets/card-fullstack.svg`。
 - 已知边界：估算宽度偏保守，超长的标签会自动缩小字号（13→12→11.5）并可能独占一行；不要放比 "Prompt / Context / Harness Engineering" 更长的标签。
-- **数据区（底部，外链动态）**：唯一的动态例外——两张 `github-readme-stats.vercel.app` 实时卡片，配色已调成与深色主题一致（`bg_color=1F2A44`、`title_color=FF8A7A`、`text_color=F5EFE0`、`icon_color=4FA39A`、`border_radius=0`、`hide_border=true`）。用户改用户名时同步更新两处 URL 的 `username=erywim`。
+- **没有数据区**：用户曾尝试接入动态统计（先 github-readme-stats 大卡、后 shields 徽章），最终决定**去掉数据区**（`heading-stats.svg` 已删除）。原因：官方 `github-readme-stats.vercel.app` 实例被维护者暂停（对所有访问者 503），shields 徽章又非大卡样式且无"最常用语言"，用户不想要了。**以后不要主动加回动态统计**，除非用户明确要求。
 
 ## 修改时的注意事项
 
@@ -43,7 +43,7 @@ README 全部由 GitHub 支持的静态格式构成（Markdown + `<img>` 引用�
 - **hero.svg / card-fullstack.svg 由脚本生成，别手改**；标题/分隔条/签名 SVG 是手工静态的，改文案需同步调坐标（文字用 `text-anchor="middle"` 居中于 rect）。字体大小用 `font-size`，CJK 按 ~1em/字估算宽度。
 - **SVG 必须是良构 XML**：标签要闭合、`&` 要写成 `&amp;`。修改后可用 `xmllint --noout assets/*.svg` 校验。
 - **像素字体用系统等宽字体，不能依赖外部字体**：SVG 经 `<img>` 加载时被 GitHub CSP 禁止拉外部资源，所以字体栈用 `'Monaco','Menlo','Consolas','Courier New',monospace`。不要加 `<style>@import(url)` 这类外链字体。
-- **设计系统（深色日式 RPG UI）**：面板黑边框 `#0A0E18`、深蓝面板 `#1F2A44`、面板高光/导轨 `#2A3A5E`、标签底 `#26345A`、主文字米白 `#F5EFE0`、次要文字 `#A8B4D0`。这些常量定义在 `scripts/generate.py` 顶部，全局替换即可换色。
+- **设计系统（日式 RPG 浅色 UI，配 GitHub 白底）**：面板黑边框 `#0A0E18`、白色面板 `#FFFFFF`、面板高光/导轨 `#E8ECF5`、标签底 `#F0F3FA`、主文字深蓝墨 `#1F2A44`、次要文字灰蓝 `#5A6B8C`。这些常量定义在 `scripts/generate.py` 顶部，全局替换即可换色。**注意**：像素精灵颜色在白底上对比度够用，无需改；分隔条 `divider.svg` 特意保持深色 RPG 场景（作为"游戏截图"与浅色 UI 对比）。
 - **精灵必须内联，不要用 `<use>`**：`<use href>` 在某些渲染器（如 QuickLook）下不渲染；hero 精灵是直接从 `<defs>` 抽取内联的（`SPRITES_INLINE`），新加像素画时也要直接写 `<rect>`。
 - `<!-- -->` 注释块不会显示在主页上，可用于保留说明文字。
 - 若未来加入动态生成（如 GitHub Actions 定时更新、readme-stats 等），需同时更新本文件以记录构建/部署方式。

@@ -26,9 +26,9 @@ tech-stack.json 结构（每张卡片一个对象，可多张）：
       }
     }
 
-像素风配色（深色日式 RPG UI）：
-    边框 #0A0E18 · 面板 #1F2A44 · 面板高光/导轨 #2A3A5E · 标签底 #26345A
-    主文字 #F5EFE0 · 次要文字 #A8B4D0 · 强调色沿用蜡笔色（红/橙/黄/绿/青/蓝/紫/粉）
+像素风配色（日式 RPG 浅色 UI，配 GitHub 白底）：
+    边框 #0A0E18 · 面板 #FFFFFF · 面板高光/导轨 #E8ECF5 · 标签底 #F0F3FA
+    主文字 #1F2A44 · 次要文字 #5A6B8C · 强调色沿用蜡笔色（红/橙/黄/绿/青/蓝/紫/粉）
 """
 import json
 import os
@@ -38,14 +38,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "tech-stack.json")
 OUT = os.path.join(ROOT, "assets")
 
-# ── 像素风（日式 RPG UI）配色与字体 ──
+# ── 像素风（日式 RPG 浅色 UI）配色与字体 ──
 PX_FONT = "'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace"
-FRAME = "#0A0E18"    # 面板黑色像素边框
-PANEL = "#1F2A44"    # 深蓝面板
-RAIL  = "#2A3A5E"    # 面板内浅一档的蓝色（导轨 / 顶部高光条）
-CHIP  = "#26345A"    # 标签底色
-TXT   = "#F5EFE0"    # 主文字（米白）
-TXT2  = "#A8B4D0"    # 次要文字（浅蓝灰）
+FRAME = "#0A0E18"    # 面板黑色像素边框（保留）
+PANEL = "#FFFFFF"    # 白色面板（配 GitHub 白底不突兀）
+RAIL  = "#E8ECF5"    # 面板内浅灰蓝（导轨 / 顶部高光条）
+CHIP  = "#F0F3FA"    # 标签底色（浅灰蓝）
+TXT   = "#1F2A44"    # 主文字（深蓝墨色）
+TXT2  = "#5A6B8C"    # 次要文字（灰蓝）
 
 ROW = 36                                     # 行距
 Y0 = 100                                     # 第一行中心 y
@@ -265,7 +265,7 @@ HERO_DEFS = """  <defs>
 SPRITES_INLINE = re.search(r"<defs>(.*)</defs>", HERO_DEFS, re.S).group(1).strip()
 
 
-def pixel_bar(x0, x1, y, bw=8, bh=5, gap=4, color="#FFD166"):
+def pixel_bar(x0, x1, y, bw=8, bh=5, gap=4, color="#F5A623"):
     """一串像素方块（用于名字下的像素下划线）。"""
     blocks = []
     x = x0
@@ -300,11 +300,11 @@ def gen_hero(cfg):
     out.append('  <!-- 像素元素（内联，避免 <use> 兼容问题） -->')
     out.append(SPRITES_INLINE)
     out.append('  <!-- 文字 -->')
-    out.append(f'  <text x="160" y="114" font-size="{g_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#FF8A7A">{esc(greeting)}</text>')
+    out.append(f'  <text x="160" y="114" font-size="{g_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#E85D4A">{esc(greeting)}</text>')
     out.append(f'  <text x="158" y="178" font-size="{n_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="{TXT}">{esc(name)}</text>')
     out.append(f'  <g shape-rendering="crispEdges">{underline}</g>')
     if tagline:
-        out.append(f'  <text x="160" y="240" font-size="{t_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#7ED6B8">{esc(tagline)}</text>')
+        out.append(f'  <text x="160" y="240" font-size="{t_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#4FA39A">{esc(tagline)}</text>')
     if sub1:
         out.append(f'  <text x="162" y="274" font-size="14" fill="{TXT2}" font-family="{PX_FONT}">{esc(sub1)}</text>')
     if sub2:

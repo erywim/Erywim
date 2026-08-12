@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400">
 <rect x="0" y="0" width="860" height="400" fill="#0A0E18"/>
-<rect x="3" y="3" width="854" height="394" fill="#1F2A44"/>
-<rect x="3" y="3" width="854" height="4" fill="#2A3A5E"/>
+<rect x="3" y="3" width="854" height="394" fill="#FFFFFF"/>
+<rect x="3" y="3" width="854" height="4" fill="#E8ECF5"/>
 <rect x="6" y="6" width="848" height="388" fill="none" stroke="#0A0E18" stroke-width="1"/>
   <!-- 像素元素（内联，避免 <use> 兼容问题） -->
 <g id="bot">
@@ -59,8 +59,8 @@
       </g>
     </g>
   <!-- 文字 -->
-  <text x="160" y="114" font-size="22" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#FF8A7A">HI THERE, I'M</text>
-  <text x="158" y="178" font-size="64" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#F5EFE0">ERYWIM</text>
-  <g shape-rendering="crispEdges"><rect x="162" y="192" width="8" height="5" fill="#FFD166"/><rect x="174" y="192" width="8" height="5" fill="#FFD166"/><rect x="186" y="192" width="8" height="5" fill="#FFD166"/><rect x="198" y="192" width="8" height="5" fill="#FFD166"/><rect x="210" y="192" width="8" height="5" fill="#FFD166"/><rect x="222" y="192" width="8" height="5" fill="#FFD166"/><rect x="234" y="192" width="8" height="5" fill="#FFD166"/><rect x="246" y="192" width="8" height="5" fill="#FFD166"/><rect x="258" y="192" width="8" height="5" fill="#FFD166"/><rect x="270" y="192" width="8" height="5" fill="#FFD166"/><rect x="282" y="192" width="8" height="5" fill="#FFD166"/><rect x="294" y="192" width="8" height="5" fill="#FFD166"/><rect x="306" y="192" width="8" height="5" fill="#FFD166"/><rect x="318" y="192" width="8" height="5" fill="#FFD166"/><rect x="330" y="192" width="8" height="5" fill="#FFD166"/><rect x="342" y="192" width="8" height="5" fill="#FFD166"/><rect x="354" y="192" width="8" height="5" fill="#FFD166"/><rect x="366" y="192" width="8" height="5" fill="#FFD166"/><rect x="378" y="192" width="8" height="5" fill="#FFD166"/><rect x="390" y="192" width="8" height="5" fill="#FFD166"/></g>
-  <text x="160" y="240" font-size="20" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#7ED6B8">AI 应用全栈工程师 · AGENT / RAG / LLM 应用</text>
+  <text x="160" y="114" font-size="22" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#E85D4A">HI THERE, I'M</text>
+  <text x="158" y="178" font-size="64" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#1F2A44">ERYWIM</text>
+  <g shape-rendering="crispEdges"><rect x="162" y="192" width="8" height="5" fill="#F5A623"/><rect x="174" y="192" width="8" height="5" fill="#F5A623"/><rect x="186" y="192" width="8" height="5" fill="#F5A623"/><rect x="198" y="192" width="8" height="5" fill="#F5A623"/><rect x="210" y="192" width="8" height="5" fill="#F5A623"/><rect x="222" y="192" width="8" height="5" fill="#F5A623"/><rect x="234" y="192" width="8" height="5" fill="#F5A623"/><rect x="246" y="192" width="8" height="5" fill="#F5A623"/><rect x="258" y="192" width="8" height="5" fill="#F5A623"/><rect x="270" y="192" width="8" height="5" fill="#F5A623"/><rect x="282" y="192" width="8" height="5" fill="#F5A623"/><rect x="294" y="192" width="8" height="5" fill="#F5A623"/><rect x="306" y="192" width="8" height="5" fill="#F5A623"/><rect x="318" y="192" width="8" height="5" fill="#F5A623"/><rect x="330" y="192" width="8" height="5" fill="#F5A623"/><rect x="342" y="192" width="8" height="5" fill="#F5A623"/><rect x="354" y="192" width="8" height="5" fill="#F5A623"/><rect x="366" y="192" width="8" height="5" fill="#F5A623"/><rect x="378" y="192" width="8" height="5" fill="#F5A623"/><rect x="390" y="192" width="8" height="5" fill="#F5A623"/></g>
+  <text x="160" y="240" font-size="20" font-family="'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace" font-weight="bold" fill="#4FA39A">AI 应用全栈工程师 · AGENT / RAG / LLM 应用</text>
 </svg>

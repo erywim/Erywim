@@ -22,14 +22,6 @@
 <!-- ── 全栈 ── -->
 <img src="assets/card-fullstack.svg" alt="全栈 · Fullstack" width="860">
 
-
-<img src="assets/heading-stats.svg" alt="数据区 · GitHub Stats" width="860">
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=erywim&amp;show_icons=true&amp;include_all_commits=true&amp;count_private=true&amp;hide_border=true&amp;border_radius=0&amp;bg_color=1F2A44&amp;title_color=FF8A7A&amp;text_color=F5EFE0&amp;icon_color=4FA39A" alt="GitHub 统计">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=erywim&amp;layout=compact&amp;hide_title=true&amp;langs_count=8&amp;hide_border=true&amp;border_radius=0&amp;bg_color=1F2A44&amp;title_color=FF8A7A&amp;text_color=F5EFE0" alt="最常用语言">
-</p>
-
 <!-- ═══════════════════ Footer ═══════════════════ -->
 <img src="assets/divider.svg" alt="" width="860">
 
