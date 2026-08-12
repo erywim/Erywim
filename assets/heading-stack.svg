@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="66" viewBox="0 0 860 66">
+  <rect x="0" y="0" width="860" height="66" fill="#0A0E18"/>
+  <rect x="3" y="3" width="854" height="60" fill="#1F2A44"/>
+  <rect x="3" y="3" width="854" height="4" fill="#2A3A5E"/>
+  <rect x="6" y="6" width="848" height="54" fill="none" stroke="#0A0E18" stroke-width="1"/>
+  <text x="24" y="42" font-size="26" font-family="'Monaco','Menlo','Consolas','Courier New',monospace" font-weight="bold" fill="#F5EFE0">TECH STACK · 技术栈</text>
+  <rect x="24" y="50" width="288" height="5" fill="#5B8DD6"/>
+</svg>
