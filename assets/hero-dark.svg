@@ -17,7 +17,7 @@
   <circle cx="794.5" cy="38" r="2.5" fill="#FF7A5C"/>
   <text x="31" y="127" fill="#F4EAD2" font-family="'Avenir Next', 'Futura', 'Helvetica Neue', Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="1.6">ERYWIM</text>
   <rect x="33" y="145" width="52" height="4" fill="#FF7A5C"/>
-  <text x="33" y="181" fill="#F4EAD2" font-family="'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="35" font-weight="600" letter-spacing="0.7">AI 全栈工程师</text>
+  <text x="33" y="181" fill="#F4EAD2" font-family="'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif" font-size="40" font-weight="600" letter-spacing="0.7">AI 全栈工程师</text>
   <g fill="none" stroke="#42536F" stroke-width="1" opacity="0.5">
     <path d="M31 192h64M43 186v12M763 46h44M785 34v24"/>
   </g>

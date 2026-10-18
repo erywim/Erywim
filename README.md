@@ -26,11 +26,11 @@
 - **关注** 长任务状态管理、工具调用可靠性、记忆与评测。
 - **可聊** Agent 工程、RAG、Java / TypeScript，以及动漫、摄影和游戏。
 
-## SELECTED WORK / 项目
+## PROJECTS / 项目
 
 ### [pi-amadeus](https://github.com/erywim/pi-amadeus) · 进行中
 
-基于 Pi Agent 的个人助手，正在把实时语音、Live2D、桌面端与飞书接进同一个对话系统。
+基于 Pi Agent 的个人助手，把实时语音、Live2D 和飞书接进同一个对话系统。
 
 `TypeScript` · `Electron` · `React` · `PostgreSQL`
 
@@ -52,11 +52,11 @@
 
 ### Agent 应用与编排
 
-拆任务、接工具、管状态，让 Agent 完成真实流程。
+拆任务、接工具、管状态，把开放任务跑通。
 
 ### RAG 与上下文工程
 
-从解析、召回、重排到压缩，搭完整检索链路。
+从解析、召回、重排到压缩，搭好检索链路。
 
 ### 实时交互与多端
 
@@ -68,11 +68,11 @@ Java / Python / TypeScript 落地，从 API、数据到界面都能接。
 
 ## TOOLBOX / 技术栈
 
-- **Agent** — `Spring AI` · `LangChain4j` · `LangGraph` · `MCP`
-- **Retrieval** — `Milvus` · `BM25 + 向量混合召回` · `Rerank` · `MinerU`
-- **Engineering** — `Java` · `Python` · `TypeScript` · `Spring Boot` · `FastAPI` · `PostgreSQL` · `Redis` · `Kafka`
-- **Interface** — `Vue` · `React` · `Next.js` · `SSE`
-- **Model basics** — `Prompt / Context / Harness Engineering` · `Transformer` · `KV-Cache` · `MoE`
+- **Agent** — `Spring AI` `LangChain4j` `LangGraph` `MCP`
+- **Retrieval** — `Milvus` `BM25 + 向量混合召回` `Rerank` `MinerU`
+- **Engineering** — `Java` `Python` `TypeScript` `Spring Boot` `FastAPI` `PostgreSQL` `Redis` `Kafka`
+- **Interface** — `Vue` `React` `NextJS`
+- **Model basics** — `Prompt / Context / Harness Engineering` `Transformer` `KV-Cache` `MoE`
 
 <details>
 <summary><strong>完整技术栈 · 六类</strong></summary>
@@ -88,7 +88,7 @@ Java / Python / TypeScript 落地，从 API、数据到界面都能接。
 
 </details>
 
-## OFF THE CLOCK / 工作之外
+## OFF-SCREEN / 工作之外
 
 动漫、摄影、游戏。喜欢把想法做成能跑的东西，也偶尔把看过的番、拍过的照片和写过的代码，整理进自己的 RPG 世界。
 

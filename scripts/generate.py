@@ -13,7 +13,10 @@ WIDTH = 840
 HEIGHT = 220
 
 DISPLAY_FONT = "'Avenir Next', 'Futura', 'Helvetica Neue', Arial, sans-serif"
-CJK_FONT = "'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif"
+CJK_FONT = (
+    "'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', "
+    "'Microsoft YaHei', sans-serif"
+)
 
 THEMES = {
     "light": {
@@ -110,7 +113,7 @@ def svg_header(profile, theme_name, colors):
   <circle cx="794.5" cy="38" r="2.5" fill="{colors['accent']}"/>
   <text x="31" y="127" fill="{colors['ink']}" font-family="{DISPLAY_FONT}" font-size="82" font-weight="800" letter-spacing="1.6">{name}</text>
   <rect x="33" y="145" width="52" height="4" fill="{colors['accent']}"/>
-  <text x="33" y="181" fill="{colors['ink']}" font-family="{CJK_FONT}" font-size="35" font-weight="600" letter-spacing="0.7">{role}</text>
+  <text x="33" y="181" fill="{colors['ink']}" font-family="{CJK_FONT}" font-size="40" font-weight="600" letter-spacing="0.7">{role}</text>
   <g fill="none" stroke="{colors['border']}" stroke-width="1" opacity="0.5">
     <path d="M31 192h64M43 186v12M763 46h44M785 34v24"/>
   </g>
