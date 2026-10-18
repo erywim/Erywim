@@ -25,9 +25,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 2. `NOW / 现在`：正在做、正在学、关注方向和可聊话题。
 3. `PROJECTS / 项目`：只放可公开验证的项目。
 4. `TRACK RECORD / 经历`：三段公开职业与教育经历。
-5. `WHAT I DO / 我在做什么`：四项能力支柱。
+5. `WHAT I DO / 做什么`：四项能力支柱。
 6. `TOOLBOX / 技术栈`：四到五组摘要，`<details>` 内保留完整六类清单。
-7. `OFF-SCREEN / 工作之外`：动漫、摄影、游戏和个人站入口。
+7. `OFF-SCREEN / 日常`：动漫、摄影、游戏和个人站入口。
 8. `CONTACT / 联系`：个人站、GitHub、Email。
 
 不要恢复 badge 墙、GitHub 动态统计卡、RPG 角色游行或整页大图。用户已经明确不想要动态统计；主页的核心信息必须保留为正文文字。
