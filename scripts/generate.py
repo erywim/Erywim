@@ -1,334 +1,148 @@
 #!/usr/bin/env python3
-"""
-生成 assets/hero.svg + assets/card-*.svg —— 像素风（日式 RPG UI）自动排版。
+"""从 tech-stack.json 生成 Profile README 的浅色/深色 Hero。"""
 
-用法：
-    python3 scripts/generate.py
-
-流程：
-    1. 编辑根目录的 tech-stack.json（改/加标签只动这里）
-    2. 跑一次本脚本，自动重新生成 4 张卡片 SVG
-    3. git add 提交即可
-
-tech-stack.json 结构（每张卡片一个对象，可多张）：
-    {
-      "fullstack": {                     // key 决定输出文件名 card-<key>.svg
-        "rail":  "FS",                   // 左侧导轨大字（取代 L1/L2...）
-        "title": "全栈 · Fullstack",      // 卡片主标题（手写体）
-        "en":    "Fullstack",            // 右上角英文小字（空字符串则不显示）
-        "accent":"#4FA39A",              // 导轨圆点 / 小字颜色
-        "icon":  "star",                 // 导轨像素图标: chip | star | db | heart
-        "blocks":[
-          { "label":"后端 · Backend", "color":"#4FA39A", "fill":"#F1F9EF", "tags":["Java", ...] },
-          { "label":"", "highlight":true, "color":"#E85D4A", "fill":"#FFF1F1", "tags":["..."] },   // highlight 用红色描边
-          { "note":"📖 研读 ...", "color":"#F5A623" }                                              // note 块渲染成整条横幅
-        ]
-      }
-    }
-
-像素风配色（日式 RPG 浅色 UI，配 GitHub 白底）：
-    边框 #0A0E18 · 面板 #FFFFFF · 面板高光/导轨 #E8ECF5 · 标签底 #F0F3FA
-    主文字 #1F2A44 · 次要文字 #5A6B8C · 强调色沿用蜡笔色（红/橙/黄/绿/青/蓝/紫/粉）
-"""
 import json
 import os
-import re
+
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "tech-stack.json")
 OUT = os.path.join(ROOT, "assets")
 
-# ── 像素风（日式 RPG 浅色 UI）配色与字体 ──
-PX_FONT = "'Monaco','Menlo','Consolas','Courier New','Andale Mono',monospace"
-FRAME = "#0A0E18"    # 面板黑色像素边框（保留）
-PANEL = "#FFFFFF"    # 白色面板（配 GitHub 白底不突兀）
-RAIL  = "#E8ECF5"    # 面板内浅灰蓝（导轨 / 顶部高光条）
-CHIP  = "#F0F3FA"    # 标签底色（浅灰蓝）
-TXT   = "#1F2A44"    # 主文字（深蓝墨色）
-TXT2  = "#5A6B8C"    # 次要文字（灰蓝）
+WIDTH = 840
+HEIGHT = 220
 
-ROW = 36                                     # 行距
-Y0 = 100                                     # 第一行中心 y
-MAX_RIGHT = 798                              # 标签最右边界（卡片 860 宽）
+DISPLAY_FONT = "'Avenir Next', 'Futura', 'Helvetica Neue', Arial, sans-serif"
+CJK_FONT = "'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif"
 
-
-def PX(s):
-    """像素风文字：拉丁字母大写（中文不受影响）。"""
-    return s.upper()
-
-# 像素图标：{(r, c) 填充格}，6 列宽，每格 4px
-PIXEL = {
-    "chip":  { "#4FA39A": {(0, 1), (0, 2), (0, 3), (0, 4), (1, 0), (1, 5),
-                           (2, 0), (2, 2), (2, 3), (2, 5), (3, 0), (3, 2), (3, 3), (3, 5),
-                           (4, 0), (4, 5), (5, 1), (5, 2), (5, 3), (5, 4)} },
-    "star":  { "#FFD166": {(0, 2), (1, 1), (1, 2), (1, 3), (2, 0), (2, 1), (2, 2), (2, 3), (2, 4),
-                           (3, 1), (3, 2), (3, 3), (4, 2)} },
-    "db":    { "#6BA368": {(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5),
-                           (1, 0), (1, 5), (2, 0), (2, 5),
-                           (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
-                           (4, 1), (4, 2), (4, 3), (4, 4), (5, 1), (5, 2), (5, 3), (5, 4)} },
-    "heart": { "#E85D4A": {(0, 1), (0, 2), (0, 4), (0, 5),
-                           (1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5),
-                           (2, 0), (2, 1), (2, 2), (2, 3), (2, 4), (2, 5),
-                           (3, 1), (3, 2), (3, 3), (3, 4), (4, 2), (4, 3)} },
+THEMES = {
+    "light": {
+        "bg": "#F3E9CE",
+        "grid": "#D6C8A7",
+        "ink": "#1C2340",
+        "muted": "#63523F",
+        "border": "#1C2340",
+        "accent": "#B64235",
+        "route": "#2F7F78",
+        "slime": "#3C9C91",
+        "gold": "#A77A2A",
+        "highlight": "#FFF9EA",
+    },
+    "dark": {
+        "bg": "#12172A",
+        "grid": "#27324B",
+        "ink": "#F4EAD2",
+        "muted": "#B9B5A9",
+        "border": "#42536F",
+        "accent": "#FF7A5C",
+        "route": "#7AD9D0",
+        "slime": "#67C9BC",
+        "gold": "#E9B45E",
+        "highlight": "#12172A",
+    },
 }
 
-
-def esc(s):
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def is_cjk(ch):
-    o = ord(ch)
-    return (0x2E80 <= o <= 0x9FFF) or (0xF900 <= o <= 0xFAFF) or (0x20000 <= o <= 0x2FA1F)
-
-
-def is_emoji(ch):
-    o = ord(ch)
-    return (0x1F000 <= o <= 0x1FAFF) or (0x2600 <= o <= 0x27BF) or (0x2300 <= o <= 0x23FF) or (0x2B00 <= o <= 0x2BFF)
+# 8-bit 史莱姆：X 为身体，E 为眼睛，W 为高光。
+SLIME = [
+    "..XXXX....",
+    ".XXXXXX...",
+    "XXXXXXXX..",
+    "XXEXXEXX..",
+    "XXXWXXXX..",
+    "XXXEEXXX..",
+    ".XXXXXX...",
+    "..XXXX....",
+]
 
 
-def text_w(s, size):
-    """估算等宽字体文本宽度：CJK ≈ 1em，emoji ≈ 1.2em，其余字符（含空格）≈ 0.62em。"""
-    w = 0.0
-    for ch in s:
-        if is_cjk(ch):
-            w += size
-        elif is_emoji(ch):
-            w += size * 1.2
-        else:
-            w += size * 0.62
-    return w
+def esc(value):
+    return (
+        str(value)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
 
 
-def chip_size(tag):
-    """按长度选字号，返回 (font_size, chip_width)。"""
-    size, w = 13, text_w(tag, 13) + 30
-    if w > 210:
-        size, w = 11.5, text_w(tag, size) + 28
-    elif w > 168:
-        size, w = 12, text_w(tag, size) + 28
-    return size, w
-
-
-def chip(x, y, tag):
-    """像素风标签：深底 + 黑色像素边框 + 米白等宽文字，无圆角无旋转。"""
-    size, w = chip_size(tag)
-    cx = x + w / 2
-    by = y + size * 0.35
-    return (f'<g>'
-            f'<rect x="{x:.0f}" y="{y - 14}" width="{w:.0f}" height="28" '
-            f'fill="{CHIP}" stroke="{FRAME}" stroke-width="2"/>'
-            f'<text x="{cx:.0f}" y="{by:.1f}" text-anchor="middle" font-size="{size}" '
-            f'fill="{TXT}" font-family="{PX_FONT}">{esc(PX(tag))}</text></g>')
-
-
-def note_bar(y, text, color):
-    return (f'<g>'
-            f'<rect x="80" y="{y - 15}" width="680" height="34" '
-            f'fill="{RAIL}" stroke="{FRAME}" stroke-width="2"/>'
-            f'<text x="420" y="{y + 4}" text-anchor="middle" font-size="13" '
-            f'fill="{TXT}" font-family="{PX_FONT}">{esc(PX(text))}</text></g>')
-
-
-def pixel(icon, ox=28, oy=96):
+def pixel_slime(x, y, scale, colors):
     parts = []
-    for color, cells in icon.items():
-        for (r, c) in cells:
-            parts.append(f'<rect x="{ox + c * 4}" y="{oy + r * 4}" width="4" height="4" fill="{color}"/>')
+    for row, cells in enumerate(SLIME):
+        for col, cell in enumerate(cells):
+            if cell == ".":
+                continue
+            fill = {
+                "X": colors["slime"],
+                "E": colors["ink"],
+                "W": colors["highlight"],
+            }[cell]
+            parts.append(
+                f'<rect x="{x + col * scale}" y="{y + row * scale}" '
+                f'width="{scale}" height="{scale}" fill="{fill}"/>'
+            )
     return "".join(parts)
 
 
-def gen_card(rail_label, cfg):
-    title = cfg["title"]
-    en = cfg.get("en", "")
-    accent = cfg.get("accent", "#4FA39A")
-    icon = PIXEL[cfg.get("icon", "chip")]
-    blocks = cfg["blocks"]
-
-    frags = []
-    y = Y0
-    for blk in blocks:
-        if "note" in blk:
-            frags.append(note_bar(y, blk["note"], blk.get("color", "#F5A623")))
-            y += ROW
-            continue
-        label = blk.get("label", "")
-        tags = blk.get("tags", [])
-        color = blk.get("color", "#4FA39A")
-        if label:
-            lbl = PX(label)
-            frags.append(f'<text x="80" y="{y + 5}" font-size="13" font-weight="bold" '
-                         f'fill="{color}" font-family="{PX_FONT}">{esc(lbl)}</text>')
-            start_x = max(168, 82 + text_w(lbl, 13) + 16)
-        else:
-            start_x = 80
-        x = start_x
-        for tag in tags:
-            size, w = chip_size(tag)
-            if x + w > MAX_RIGHT:
-                y += ROW
-                x = start_x
-            frags.append(chip(x, y, tag))
-            x += w + 12
-        y += ROW
-
-    h = (y - ROW) + 46
-    rail_from = min(120, h - 30)
-    rail_to = h - 24
-
-    out = []
-    out.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="860" height="{h}" viewBox="0 0 860 {h}">')
-    # 深色像素面板：黑色外框 + 深蓝面板 + 顶部高光条 + 内框线
-    out.append(f'<rect x="0" y="0" width="860" height="{h}" fill="{FRAME}"/>')
-    out.append(f'<rect x="3" y="3" width="854" height="{h - 6}" fill="{PANEL}"/>')
-    out.append(f'<rect x="3" y="3" width="854" height="4" fill="{RAIL}"/>')
-    out.append(f'<rect x="6" y="6" width="848" height="{h - 12}" fill="none" stroke="{FRAME}" stroke-width="1"/>')
-    # 导轨
-    out.append(f'<rect x="38" y="28" width="5" height="5" fill="{accent}"/>')
-    out.append(f'<text x="44" y="72" font-size="26" font-family="{PX_FONT}" font-weight="bold" '
-               f'fill="{accent}">{rail_label}</text>')
-    out.append(f'<g shape-rendering="crispEdges">{pixel(icon)}</g>')
-    out.append(f'<rect x="57" y="120" width="3" height="{rail_to - 120}" fill="{RAIL}"/>')
-    # 标题
-    out.append(f'<text x="80" y="50" font-size="22" font-family="{PX_FONT}" font-weight="bold" '
-               f'fill="{TXT}">{esc(PX(title))}</text>')
-    if en:
-        out.append(f'<text x="730" y="46" font-size="14" font-family="{PX_FONT}" font-weight="bold" '
-                   f'fill="{accent}">{esc(PX(en))}</text>')
-    out.extend(frags)
-    out.append("</svg>")
-    return "\n".join(out)
-
-
-# ─────────────────────────── HERO 生成 ───────────────────────────
-# 装饰层（像素画 / 外框 / 云朵 / 星星 / 螺旋）是固定模板，文字从 hero 数据读取。
-
-HERO_DEFS = """  <defs>
-    <g id="bot">
-      <g shape-rendering="crispEdges">
-        <rect x="62" y="52" width="6" height="6" fill="#4FA39A"/><rect x="74" y="52" width="6" height="6" fill="#4FA39A"/>
-        <rect x="62" y="58" width="6" height="6" fill="#4FA39A"/><rect x="74" y="58" width="6" height="6" fill="#4FA39A"/>
-        <rect x="56" y="64" width="6" height="6" fill="#4FA39A"/><rect x="62" y="64" width="6" height="6" fill="#4FA39A"/><rect x="68" y="64" width="6" height="6" fill="#4FA39A"/><rect x="74" y="64" width="6" height="6" fill="#4FA39A"/><rect x="80" y="64" width="6" height="6" fill="#4FA39A"/>
-        <rect x="50" y="70" width="6" height="6" fill="#4FA39A"/><rect x="56" y="70" width="6" height="6" fill="#4FA39A"/><rect x="62" y="70" width="6" height="6" fill="#4FA39A"/><rect x="68" y="70" width="6" height="6" fill="#4FA39A"/><rect x="74" y="70" width="6" height="6" fill="#4FA39A"/><rect x="80" y="70" width="6" height="6" fill="#4FA39A"/><rect x="86" y="70" width="6" height="6" fill="#4FA39A"/>
-        <rect x="44" y="76" width="6" height="6" fill="#4FA39A"/><rect x="50" y="76" width="6" height="6" fill="#4FA39A"/><rect x="56" y="76" width="6" height="6" fill="#FFFFFF"/><rect x="62" y="76" width="6" height="6" fill="#4FA39A"/><rect x="68" y="76" width="6" height="6" fill="#4FA39A"/><rect x="74" y="76" width="6" height="6" fill="#4FA39A"/><rect x="80" y="76" width="6" height="6" fill="#FFFFFF"/><rect x="86" y="76" width="6" height="6" fill="#4FA39A"/><rect x="92" y="76" width="6" height="6" fill="#4FA39A"/>
-        <rect x="44" y="82" width="6" height="6" fill="#4FA39A"/><rect x="50" y="82" width="6" height="6" fill="#4FA39A"/><rect x="56" y="82" width="6" height="6" fill="#4FA39A"/><rect x="62" y="82" width="6" height="6" fill="#4FA39A"/><rect x="68" y="82" width="6" height="6" fill="#4FA39A"/><rect x="74" y="82" width="6" height="6" fill="#4FA39A"/><rect x="80" y="82" width="6" height="6" fill="#4FA39A"/><rect x="86" y="82" width="6" height="6" fill="#4FA39A"/><rect x="92" y="82" width="6" height="6" fill="#4FA39A"/>
-        <rect x="50" y="88" width="6" height="6" fill="#4FA39A"/><rect x="56" y="88" width="6" height="6" fill="#4FA39A"/><rect x="62" y="88" width="6" height="6" fill="#4FA39A"/><rect x="68" y="88" width="6" height="6" fill="#4FA39A"/><rect x="74" y="88" width="6" height="6" fill="#4FA39A"/><rect x="80" y="88" width="6" height="6" fill="#4FA39A"/><rect x="86" y="88" width="6" height="6" fill="#4FA39A"/>
-        <rect x="44" y="94" width="6" height="6" fill="#4FA39A"/><rect x="62" y="94" width="6" height="6" fill="#4FA39A"/><rect x="68" y="94" width="6" height="6" fill="#4FA39A"/><rect x="74" y="94" width="6" height="6" fill="#4FA39A"/><rect x="92" y="94" width="6" height="6" fill="#4FA39A"/>
-        <rect x="50" y="100" width="6" height="6" fill="#4FA39A"/><rect x="56" y="100" width="6" height="6" fill="#4FA39A"/><rect x="62" y="100" width="6" height="6" fill="#4FA39A"/><rect x="68" y="100" width="6" height="6" fill="#4FA39A"/><rect x="74" y="100" width="6" height="6" fill="#4FA39A"/><rect x="80" y="100" width="6" height="6" fill="#4FA39A"/><rect x="86" y="100" width="6" height="6" fill="#4FA39A"/>
-      </g>
-    </g>
-    <g id="rocket">
-      <g shape-rendering="crispEdges">
-        <rect x="678" y="64" width="6" height="6" fill="#E85D4A"/><rect x="684" y="64" width="6" height="6" fill="#E85D4A"/>
-        <rect x="672" y="70" width="6" height="6" fill="#E85D4A"/><rect x="678" y="70" width="6" height="6" fill="#E85D4A"/><rect x="684" y="70" width="6" height="6" fill="#E85D4A"/><rect x="690" y="70" width="6" height="6" fill="#E85D4A"/>
-        <rect x="666" y="76" width="6" height="6" fill="#E85D4A"/><rect x="672" y="76" width="6" height="6" fill="#E85D4A"/><rect x="678" y="76" width="6" height="6" fill="#E85D4A"/><rect x="684" y="76" width="6" height="6" fill="#E85D4A"/><rect x="690" y="76" width="6" height="6" fill="#E85D4A"/><rect x="696" y="76" width="6" height="6" fill="#E85D4A"/>
-        <rect x="666" y="82" width="6" height="6" fill="#E85D4A"/><rect x="672" y="82" width="6" height="6" fill="#FFFFFF"/><rect x="678" y="82" width="6" height="6" fill="#FFFFFF"/><rect x="684" y="82" width="6" height="6" fill="#FFFFFF"/><rect x="690" y="82" width="6" height="6" fill="#FFFFFF"/><rect x="696" y="82" width="6" height="6" fill="#E85D4A"/>
-        <rect x="666" y="88" width="6" height="6" fill="#E85D4A"/><rect x="672" y="88" width="6" height="6" fill="#E85D4A"/><rect x="678" y="88" width="6" height="6" fill="#E85D4A"/><rect x="684" y="88" width="6" height="6" fill="#E85D4A"/><rect x="690" y="88" width="6" height="6" fill="#E85D4A"/><rect x="696" y="88" width="6" height="6" fill="#E85D4A"/>
-        <rect x="666" y="94" width="6" height="6" fill="#E85D4A"/><rect x="678" y="94" width="6" height="6" fill="#E85D4A"/><rect x="684" y="94" width="6" height="6" fill="#E85D4A"/><rect x="696" y="94" width="6" height="6" fill="#E85D4A"/>
-        <rect x="672" y="100" width="6" height="6" fill="#E85D4A"/><rect x="690" y="100" width="6" height="6" fill="#E85D4A"/>
-        <rect x="678" y="106" width="6" height="6" fill="#F5A623"/><rect x="684" y="106" width="6" height="6" fill="#F5A623"/>
-        <rect x="672" y="112" width="6" height="6" fill="#F5A623"/><rect x="690" y="112" width="6" height="6" fill="#F5A623"/>
-      </g>
-    </g>
-    <g id="heart">
-      <g shape-rendering="crispEdges">
-        <rect x="678" y="320" width="6" height="6" fill="#E85D4A"/><rect x="684" y="320" width="6" height="6" fill="#E85D4A"/><rect x="696" y="320" width="6" height="6" fill="#E85D4A"/><rect x="702" y="320" width="6" height="6" fill="#E85D4A"/>
-        <rect x="672" y="326" width="6" height="6" fill="#E85D4A"/><rect x="678" y="326" width="6" height="6" fill="#E85D4A"/><rect x="684" y="326" width="6" height="6" fill="#E85D4A"/><rect x="690" y="326" width="6" height="6" fill="#E85D4A"/><rect x="696" y="326" width="6" height="6" fill="#E85D4A"/><rect x="702" y="326" width="6" height="6" fill="#E85D4A"/><rect x="708" y="326" width="6" height="6" fill="#E85D4A"/>
-        <rect x="672" y="332" width="6" height="6" fill="#E85D4A"/><rect x="678" y="332" width="6" height="6" fill="#E85D4A"/><rect x="684" y="332" width="6" height="6" fill="#E85D4A"/><rect x="690" y="332" width="6" height="6" fill="#E85D4A"/><rect x="696" y="332" width="6" height="6" fill="#E85D4A"/><rect x="702" y="332" width="6" height="6" fill="#E85D4A"/><rect x="708" y="332" width="6" height="6" fill="#E85D4A"/>
-        <rect x="678" y="338" width="6" height="6" fill="#E85D4A"/><rect x="684" y="338" width="6" height="6" fill="#E85D4A"/><rect x="690" y="338" width="6" height="6" fill="#E85D4A"/><rect x="696" y="338" width="6" height="6" fill="#E85D4A"/><rect x="702" y="338" width="6" height="6" fill="#E85D4A"/>
-        <rect x="684" y="344" width="6" height="6" fill="#E85D4A"/><rect x="690" y="344" width="6" height="6" fill="#E85D4A"/><rect x="696" y="344" width="6" height="6" fill="#E85D4A"/>
-        <rect x="690" y="350" width="6" height="6" fill="#E85D4A"/>
-      </g>
-    </g>
-    <g id="daisy">
-      <g shape-rendering="crispEdges">
-        <rect x="56" y="326" width="6" height="6" fill="#E58AB8"/><rect x="68" y="326" width="6" height="6" fill="#E58AB8"/>
-        <rect x="50" y="332" width="6" height="6" fill="#E58AB8"/><rect x="56" y="332" width="6" height="6" fill="#E58AB8"/><rect x="62" y="332" width="6" height="6" fill="#E58AB8"/><rect x="68" y="332" width="6" height="6" fill="#E58AB8"/><rect x="74" y="332" width="6" height="6" fill="#E58AB8"/>
-        <rect x="44" y="338" width="6" height="6" fill="#E58AB8"/><rect x="50" y="338" width="6" height="6" fill="#FFD166"/><rect x="56" y="338" width="6" height="6" fill="#FFD166"/><rect x="62" y="338" width="6" height="6" fill="#FFD166"/><rect x="68" y="338" width="6" height="6" fill="#FFD166"/><rect x="74" y="338" width="6" height="6" fill="#FFD166"/><rect x="80" y="338" width="6" height="6" fill="#E58AB8"/>
-        <rect x="50" y="344" width="6" height="6" fill="#E58AB8"/><rect x="56" y="344" width="6" height="6" fill="#E58AB8"/><rect x="62" y="344" width="6" height="6" fill="#E58AB8"/><rect x="68" y="344" width="6" height="6" fill="#E58AB8"/><rect x="74" y="344" width="6" height="6" fill="#E58AB8"/>
-        <rect x="56" y="350" width="6" height="6" fill="#E58AB8"/><rect x="68" y="350" width="6" height="6" fill="#E58AB8"/>
-      </g>
-    </g>
-    <g id="sparkle">
-      <g shape-rendering="crispEdges">
-        <rect x="752" y="190" width="6" height="6" fill="#FFD166"/>
-        <rect x="746" y="196" width="6" height="6" fill="#FFD166"/><rect x="752" y="196" width="6" height="6" fill="#FFD166"/><rect x="758" y="196" width="6" height="6" fill="#FFD166"/>
-        <rect x="740" y="202" width="6" height="6" fill="#FFD166"/><rect x="746" y="202" width="6" height="6" fill="#FFD166"/><rect x="752" y="202" width="6" height="6" fill="#FFD166"/><rect x="758" y="202" width="6" height="6" fill="#FFD166"/><rect x="764" y="202" width="6" height="6" fill="#FFD166"/>
-        <rect x="746" y="208" width="6" height="6" fill="#FFD166"/><rect x="752" y="208" width="6" height="6" fill="#FFD166"/><rect x="758" y="208" width="6" height="6" fill="#FFD166"/>
-        <rect x="752" y="214" width="6" height="6" fill="#FFD166"/>
-      </g>
-    </g>
-  </defs>"""
-
-# 精灵直接内联（不依赖 <use>，兼容所有渲染器）
-SPRITES_INLINE = re.search(r"<defs>(.*)</defs>", HERO_DEFS, re.S).group(1).strip()
-
-
-def pixel_bar(x0, x1, y, bw=8, bh=5, gap=4, color="#F5A623"):
-    """一串像素方块（用于名字下的像素下划线）。"""
-    blocks = []
-    x = x0
-    while x + bw <= x1:
-        blocks.append(f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" fill="{color}"/>')
-        x += bw + gap
-    if x < x1:
-        blocks.append(f'<rect x="{x}" y="{y}" width="{max(x1 - x, 3)}" height="{bh}" fill="{color}"/>')
-    return "".join(blocks)
-
-
-def gen_hero(cfg):
-    greeting = PX(cfg.get("greeting", "hi there, I'm"))
-    name = PX(cfg.get("name", "Erywim"))
-    tagline = PX(cfg.get("tagline", ""))
-    sub1 = PX(cfg.get("sub1", ""))
-    sub2 = PX(cfg.get("sub2", ""))
-
-    g_size = min(22, 660 / max(text_w(greeting, 1), 1))
-    n_size = min(64, 470 / max(text_w(name, 1), 1))   # 名字要避开右上火箭
-    t_size = min(20, 660 / max(text_w(tagline, 1), 1)) if tagline else 20
-    name_w = text_w(name, n_size)
-    underline = pixel_bar(162, 162 + name_w, 192)
-
-    out = []
-    out.append('<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400">')
-    # 深色像素面板
-    out.append(f'<rect x="0" y="0" width="860" height="400" fill="{FRAME}"/>')
-    out.append(f'<rect x="3" y="3" width="854" height="394" fill="{PANEL}"/>')
-    out.append(f'<rect x="3" y="3" width="854" height="4" fill="{RAIL}"/>')
-    out.append(f'<rect x="6" y="6" width="848" height="388" fill="none" stroke="{FRAME}" stroke-width="1"/>')
-    out.append('  <!-- 像素元素（内联，避免 <use> 兼容问题） -->')
-    out.append(SPRITES_INLINE)
-    out.append('  <!-- 文字 -->')
-    out.append(f'  <text x="160" y="114" font-size="{g_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#E85D4A">{esc(greeting)}</text>')
-    out.append(f'  <text x="158" y="178" font-size="{n_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="{TXT}">{esc(name)}</text>')
-    out.append(f'  <g shape-rendering="crispEdges">{underline}</g>')
-    if tagline:
-        out.append(f'  <text x="160" y="240" font-size="{t_size:.0f}" font-family="{PX_FONT}" font-weight="bold" fill="#4FA39A">{esc(tagline)}</text>')
-    if sub1:
-        out.append(f'  <text x="162" y="274" font-size="14" fill="{TXT2}" font-family="{PX_FONT}">{esc(sub1)}</text>')
-    if sub2:
-        out.append(f'  <text x="162" y="300" font-size="14" fill="{TXT2}" font-family="{PX_FONT}">{esc(sub2)}</text>')
-    out.append('</svg>')
-    return "\n".join(out)
+def svg_header(profile, theme_name, colors):
+    name = esc(profile["name"])
+    role = esc(profile["role"])
+    title = f"{name} — {role}"
+    desc = (
+        f"{name}，{role}。个人档案横幅，右侧是一条从像素史莱姆出发、"
+        "经过四个节点抵达终点旗帜的冒险路线。"
+    )
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="title desc">
+  <title id="title">{esc(title)}</title>
+  <desc id="desc">{esc(desc)}</desc>
+  <defs>
+    <pattern id="dot-grid-{theme_name}" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1" fill="{colors['grid']}" opacity="0.62"/>
+    </pattern>
+  </defs>
+  <rect x="1.5" y="1.5" width="837" height="217" rx="8" fill="{colors['bg']}"/>
+  <rect x="1.5" y="1.5" width="837" height="217" rx="8" fill="url(#dot-grid-{theme_name})"/>
+  <rect x="1.5" y="1.5" width="837" height="217" rx="8" fill="none" stroke="{colors['border']}" stroke-width="3"/>
+  <path d="M22 1.5H818M22 218.5H818" stroke="{colors['border']}" stroke-width="1" opacity="0.16"/>
+  <rect x="31" y="34" width="8" height="8" fill="{colors['accent']}"/>
+  <rect x="44" y="34" width="8" height="8" fill="{colors['route']}" opacity="0.72"/>
+  <rect x="57" y="34" width="8" height="8" fill="{colors['gold']}" opacity="0.72"/>
+  <path d="M782 38h25M794.5 25.5v25" stroke="{colors['border']}" stroke-width="1" opacity="0.55"/>
+  <circle cx="794.5" cy="38" r="2.5" fill="{colors['accent']}"/>
+  <text x="31" y="127" fill="{colors['ink']}" font-family="{DISPLAY_FONT}" font-size="82" font-weight="800" letter-spacing="1.6">{name}</text>
+  <rect x="33" y="145" width="52" height="4" fill="{colors['accent']}"/>
+  <text x="33" y="181" fill="{colors['ink']}" font-family="{CJK_FONT}" font-size="35" font-weight="600" letter-spacing="0.7">{role}</text>
+  <g fill="none" stroke="{colors['border']}" stroke-width="1" opacity="0.5">
+    <path d="M31 192h64M43 186v12M763 46h44M785 34v24"/>
+  </g>
+  <g opacity="0.88">
+    <path d="M553 163 C583 155 584 133 613 126 S655 101 686 109 S724 114 742 84" fill="none" stroke="{colors['route']}" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 9"/>
+    <circle cx="613" cy="126" r="6" fill="{colors['bg']}" stroke="{colors['route']}" stroke-width="3"/>
+    <circle cx="654" cy="103" r="6" fill="{colors['bg']}" stroke="{colors['route']}" stroke-width="3"/>
+    <circle cx="696" cy="112" r="6" fill="{colors['bg']}" stroke="{colors['route']}" stroke-width="3"/>
+    <circle cx="742" cy="84" r="8" fill="{colors['bg']}" stroke="{colors['accent']}" stroke-width="3"/>
+    <path d="M742 84V59" stroke="{colors['accent']}" stroke-width="3" stroke-linecap="square"/>
+    <path d="M746 60h19l-6 7 6 7h-19z" fill="{colors['accent']}"/>
+    <path d="M535 90l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="{colors['gold']}" opacity="0.9"/>
+    <path d="M773 151l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="{colors['route']}" opacity="0.7"/>
+    <path d="M520 61h17M528.5 52.5v17" stroke="{colors['border']}" stroke-width="1" opacity="0.42"/>
+    <path d="M775 174h24M787 162v24" stroke="{colors['border']}" stroke-width="1" opacity="0.42"/>
+  </g>
+  <g shape-rendering="crispEdges">{pixel_slime(522, 158, 3, colors)}</g>
+</svg>
+"""
 
 
 def main():
-    with open(DATA, encoding="utf-8") as f:
-        data = json.load(f)
+    with open(DATA, encoding="utf-8") as source:
+        data = json.load(source)
+
+    profile = data["profile"]
     os.makedirs(OUT, exist_ok=True)
-    for key, cfg in data.items():
-        if key == "hero":
-            path = os.path.join(OUT, "hero.svg")
-            with open(path, "w", encoding="utf-8") as f:
-                f.write(gen_hero(cfg))
-            print(f"generated {path}")
-        else:
-            rail_label = cfg.get("rail", "FS")
-            path = os.path.join(OUT, f"card-{key}.svg")
-            with open(path, "w", encoding="utf-8") as f:
-                f.write(gen_card(rail_label, cfg))
-            print(f"generated {path}")
+    for theme_name, colors in THEMES.items():
+        path = os.path.join(OUT, f"hero-{theme_name}.svg")
+        with open(path, "w", encoding="utf-8") as output:
+            output.write(svg_header(profile, theme_name, colors))
+        print(f"generated {path}")
 
 
 if __name__ == "__main__":

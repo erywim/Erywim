@@ -1,20 +1,88 @@
 {
-  "hero": {
-    "greeting": "hi there, I'm",
-    "name": "Erywim",
-    "tagline": "AI 应用全栈工程师 · Agent / RAG / LLM 应用"
+  "profile": {
+    "name": "ERYWIM",
+    "role": "AI 全栈工程师"
   },
-  "fullstack": {
-    "rail": "FS",
-    "title": "全栈 · Fullstack",
-    "en": "",
-    "accent": "#4FA39A",
-    "icon": "star",
-    "blocks": [
-      { "label": "AI 应用 · Agent", "color": "#E85D4A", "fill": "#FFF1F1", "tags": ["Spring-ai", "Langchain4j", "LangChain", "LangGraph", "RAG", "Milvus"] },
-      { "label": "后端 · Backend", "color": "#4FA39A", "fill": "#F1F9EF", "tags": ["Java", "Spring", "MyBatis", "Python", "FastAPI", "SQLModel", "GoLang","PostgreSQL", "Netty"] },
-      { "label": "前端 · Frontend", "color": "#E58AB8", "fill": "#FFF1F7", "tags": ["TypeScript", "Vue"] },
-      { "label": "中间件 · Middleware", "color": "#5B8DD6", "fill": "#F1F7FF", "tags": ["MySQL", "Redis", "Dubbo", "ZooKeeper", "Feign", "Nacos", "RabbitMQ"] }
-    ]
-  }
+  "techStack": [
+    {
+      "name": "Agent 应用框架",
+      "items": [
+        "Spring AI",
+        "LangChain4j",
+        "LangChain",
+        "LangGraph",
+        "SSE",
+        "Function Calling",
+        "MCP",
+        "Skill / SOP 提炼",
+        "Dify",
+        "Claude Code"
+      ]
+    },
+    {
+      "name": "Agent 编排范式",
+      "items": [
+        "ReAct",
+        "Plan-and-Execute",
+        "Self-Reflection",
+        "Multi-Agent",
+        "A2A 协议",
+        "长任务状态管理"
+      ]
+    },
+    {
+      "name": "RAG 与检索",
+      "items": [
+        "Milvus",
+        "BM25 + 向量混合召回",
+        "Rerank",
+        "语义缓存",
+        "MinerU 文档解析",
+        "上下文压缩"
+      ]
+    },
+    {
+      "name": "中间件",
+      "items": [
+        "MySQL",
+        "PostgreSQL",
+        "Redis",
+        "Nacos",
+        "Kafka",
+        "RabbitMQ",
+        "高并发治理"
+      ]
+    },
+    {
+      "name": "全栈与工程化",
+      "items": [
+        "Java",
+        "Python",
+        "Golang",
+        "TypeScript",
+        "Spring / SpringBoot",
+        "Netty",
+        "MyBatis",
+        "Dubbo",
+        "OpenFeign",
+        "FastAPI",
+        "SqlModel",
+        "Kitex",
+        "Hertz",
+        "Vue",
+        "React",
+        "NextJS"
+      ]
+    },
+    {
+      "name": "模型与理论",
+      "items": [
+        "Prompt / Context / Harness Engineering",
+        "Memory管理",
+        "Transformer",
+        "KV-Cache / Prompt-Cache",
+        "MoE"
+      ]
+    }
+  ]
 }
