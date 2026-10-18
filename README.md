@@ -69,7 +69,7 @@ Java / Python / TypeScript 落地，从 API、数据到界面都能接。
 ## TOOLBOX / 技术栈
 
 - **Agent** — `Spring AI` `LangChain4j` `LangGraph` `MCP`
-- **Retrieval** — `Milvus` `BM25 + 向量混合召回` `Rerank` `MinerU`
+- **Retrieval** — `Milvus` `BM25 + Dense` `Rerank` `MinerU`
 - **Engineering** — `Java` `Python` `TypeScript` `Spring Boot` `FastAPI` `PostgreSQL` `Redis` `Kafka`
 - **Interface** — `Vue` `React` `NextJS`
 - **Model basics** — `Prompt / Context / Harness Engineering` `Transformer` `KV-Cache` `MoE`
