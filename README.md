@@ -13,8 +13,8 @@
   <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
 </p>
 
-<img align="right" width="350" src="assets/chibi-peek-light.png#gh-light-mode-only" alt="Q版角色从右侧探出头">
-<img align="right" width="350" src="assets/chibi-peek-dark.png#gh-dark-mode-only" alt="Q版角色从右侧探出头">
+<img align="right" width="45%" src="assets/chibi-peek-light.png#gh-light-mode-only" alt="Q版角色">
+<img align="right" width="45%" src="assets/chibi-peek-dark.png#gh-dark-mode-only" alt="Q版角色">
 
 ## 👋 About Me
 
