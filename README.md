@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>AI Full-Stack Engineer</strong><br>
-  Turning model capabilities into products that hold up in production.
+  Turning model capabilities into products that hold up in production<img src="assets/typing-cat.gif" alt="敲键盘" width="30">.
 </p>
 
 <p align="center">
