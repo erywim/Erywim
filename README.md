@@ -38,6 +38,9 @@ I'm an AI full-stack engineer focused on turning LLM capabilities into products 
   <img src="https://img.shields.io/badge/Milvus-00A1EA?style=for-the-badge&amp;logo=milvus&amp;logoColor=white" alt="Milvus">
   <img src="https://img.shields.io/badge/Dify-1C64F2?style=for-the-badge&amp;logo=dify&amp;logoColor=white" alt="Dify">
   <img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&amp;logo=anthropic&amp;logoColor=white" alt="Claude Code">
+  <img src="https://img.shields.io/badge/Memory-0F766E?style=for-the-badge" alt="Memory management">
+  <img src="https://img.shields.io/badge/Long--running_State-0F766E?style=for-the-badge" alt="Long-running state management">
+  <img src="https://img.shields.io/badge/Harness_Engineering-EA580C?style=for-the-badge" alt="Harness engineering">
 </p>
 
 ### Backend & Data
@@ -53,6 +56,9 @@ I'm an AI full-stack engineer focused on turning LLM capabilities into products 
   <img src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&amp;logo=apachekafka&amp;logoColor=white" alt="Kafka">
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&amp;logo=mysql&amp;logoColor=white" alt="MySQL">
   <img src="https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&amp;logo=rabbitmq&amp;logoColor=white" alt="RabbitMQ">
+  <img src="https://img.shields.io/badge/Apache_Dubbo-D22128?style=for-the-badge" alt="Apache Dubbo">
+  <img src="https://img.shields.io/badge/Netty-2E7D32?style=for-the-badge&amp;logo=netty&amp;logoColor=white" alt="Netty">
+  <img src="https://img.shields.io/badge/High--Concurrency-334155?style=for-the-badge" alt="High-concurrency engineering">
 </p>
 
 ### Frontend & Interface
