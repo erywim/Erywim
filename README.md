@@ -3,14 +3,14 @@
 </p>
 
 <p align="center">
-  <strong>AI Full-Stack Engineer · Agent Systems / RAG / LLM</strong><br>
+  <strong>AI Full-Stack Engineer</strong><br>
   Turning model capabilities into products that hold up in production.
 </p>
 
 <p align="center">
-  <a href="https://erywim.github.io/"><img src="https://img.shields.io/badge/Website-erywim.github.io-0EA5E9?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Personal website"></a>
-  <a href="mailto:erywim@163.com"><img src="https://img.shields.io/badge/Email-erywim%40163.com-EA4335?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email"></a>
-  <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
+  <a href="https://erywim.github.io/"><img src="https://img.shields.io/badge/Blog-0EA5E9?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Personal website"></a>
+  <a href="mailto:erywim@163.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email"></a>
+  <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
 </p>
 
 <img align="right" width="45%" src="assets/chibi-peek-light.png#gh-light-mode-only" alt="Q版角色">
