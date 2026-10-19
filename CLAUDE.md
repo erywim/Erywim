@@ -8,11 +8,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 当前结构
 
-- `README.md`：常规 GitHub Profile 布局，包含欢迎横幅、简介、技术徽章、项目、GitHub 数据、贡献蛇和联系方式。
+- `README.md`：常规 GitHub Profile 布局，包含欢迎横幅、简介、右侧跨行插画、技术徽章、GitHub 数据和贡献蛇。
 - `assets/hero.svg`：自包含的深色动态横幅，带打字、扫描线、浮动粒子和终端卡片动效。
-- `tech-stack.json`：Hero 文案与关于页六类、共 50 项技术栈的校验来源。
+- `assets/chibi-peek-light.png`、`assets/chibi-peek-dark.png`：右侧跨行 Q 版人物插画，分别适配 GitHub 浅色和深色主题。
+- `tech-stack.json`：Hero 文案与完整技术栈的备查数据。
 - `scripts/generate.py`：生成 `assets/hero.svg`。
-- `scripts/check_readme.py`：检查 README 的完整技术栈、本地图片和图片 alt。
+- `scripts/check_readme.py`：检查 README 的本地图片和图片 alt。
 - `.github/workflows/snake.yml`：每天生成贡献蛇并发布到 `output` 分支。
 - `.gitignore`：忽略 Python 缓存和 macOS 临时文件。
 
@@ -24,14 +25,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. 动态 Hero。
 2. 网站、Email、GitHub 徽章。
-3. `About Me`：当前在做什么、背景、学习方向、兴趣。
-4. `Tech Stack`：AI、后端、前端的代表性徽章，`<details>` 内保留完整 50 项。
-5. `Featured Projects`：只放可公开验证的项目。
+3. 右侧浮动 Q 版人物插画，跨过 About Me 和 Tech Stack 区域。
+4. `About Me`：当前在做什么、背景、学习方向、兴趣。
+5. `Tech Stack`：AI、后端、前端的代表性徽章。
 6. `GitHub Stats`：GitHub Readme Stats 与 streak-stats。
-7. `Contribution Snake`：读取 `output` 分支的明暗两套贡献蛇 SVG。
-8. `Let's Connect`：网站、Email、GitHub。
+7. 贡献蛇：读取 `output` 分支的明暗两套 SVG。
 
-不要恢复博客式的 RPG 角色卡、冒险路线或长段职业叙事。GitHub 主页应保持常规 Profile 结构，视觉重点集中在一个动态 Hero。
+用户已经删除了完整技术栈折叠区、项目区、贡献蛇标题和底部联系方式，不要主动加回。GitHub 主页应保持常规 Profile 结构，视觉重点集中在一个动态 Hero 和右侧插画。
 
 ## 修改流程
 
@@ -42,19 +42,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 3. 运行 `python3 scripts/check_readme.py`。
 4. 运行 `xmllint --noout assets/hero.svg`。
 
-增删技术栈：
-
-1. 编辑 `tech-stack.json` 的 `techStack` 数组。
-2. 同步更新 `README.md` 的徽章和 `<details>` 清单。
-3. 运行 `python3 scripts/check_readme.py`，确保 6 类、50 项和全部条目都被覆盖。
-4. 如果关于页也变更，以 https://erywim.github.io/about/ 为准同步数据。
-
 ## GitHub 渲染约束
 
 - Profile README 的桌面内容宽度约为 846px，375px 手机下实际约 293px。Hero 按 880×240 设计，只承载大字号身份信息；其他内容使用原生 Markdown。
 - GitHub 会过滤内联 `<svg>`、`<script>`、`<style>`、`<iframe>` 和自定义样式。图片必须走仓库内的独立 `.svg` 文件。
 - `<img>` 加载的 SVG 是独立图片文档。GitHub raw 的 CSP 允许 SVG 内联样式与动画，但禁止外部字体、外部图片、脚本或 `currentColor` 依赖。
 - Hero 使用 SMIL 动画，目前在 Chrome 中通过真实 GitHub 页面验证过打字和扫描线动效。
+- 右侧插画使用普通 `<img align="right">` 浮动；`#gh-light-mode-only` / `#gh-dark-mode-only` 负责主题切换。桌面端宽度为 350，手机端会被 `max-width: 100%` 限制为整行。
+- 图片浮动结束后使用 `<br clear="right" />` 清除浮动，避免影响 GitHub Stats。
 - 外部统计卡依赖第三方服务，可能被 Camo 缓存或短时不可用；不要让它们成为核心信息的唯一来源。
 - 贡献蛇由 `.github/workflows/snake.yml` 生成到 `output` 分支，README 通过 raw URL 读取，不要手写或提交生成结果。
 - 装饰图片必须有非空 alt；GitHub 会自动把图片包进链接，空 alt 会形成无名称链接。
@@ -66,6 +61,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 主文字：近白 `#F8FAFC`；打字文本与高亮：青色 `#67E8F9`；提示色：绿色 `#34D399`；状态色：琥珀 `#FBBF24`。
 - 动效克制：打字、扫描线、光扫、少量粒子；不要继续增加旋转、闪烁或大面积渐变动画。
 - 正文使用 GitHub 原生排版，技术栈用 shields.io 徽章分组，避免再做大面积自绘技能卡。
+- 右侧插画保持原始 Q 版人物构图；浅色版保留黑色线稿，深色版把近黑线稿提亮为暖白色。
 
 ## 上线
 
@@ -75,5 +71,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - GitHub 浅色和深色主题；
 - Hero 动画是否在 `<img>` 中运行；
 - 技术徽章、统计卡和贡献蛇是否加载；
-- `<details>` 展开后 50 项技术栈是否可读；
+- 右侧插画在浅色/深色下是否切换正确，桌面是否跨行绕排、手机是否整行显示；
 - 所有链接可点击，图片无 404。

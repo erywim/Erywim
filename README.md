@@ -13,6 +13,9 @@
   <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
 </p>
 
+<img align="right" width="350" src="assets/chibi-peek-light.png#gh-light-mode-only" alt="Q版角色从右侧探出头">
+<img align="right" width="350" src="assets/chibi-peek-dark.png#gh-dark-mode-only" alt="Q版角色从右侧探出头">
+
 ## 👋 About Me
 
 I'm an AI full-stack engineer focused on turning LLM capabilities into products that hold up in production. I work across agent orchestration, retrieval, backend systems, and multi-platform interaction.
@@ -64,35 +67,10 @@ I'm an AI full-stack engineer focused on turning LLM capabilities into products 
   <img src="https://img.shields.io/badge/Live2D-E58AB8?style=for-the-badge" alt="Live2D">
 </p>
 
-<details>
-<summary><strong>Full tech stack (50 items)</strong></summary>
+<br clear="right" />
 
-- **Agent 应用框架** — `Spring AI`、`LangChain4j`、`LangChain`、`LangGraph`、`SSE`、`Function Calling`、`MCP`、`Skill / SOP 提炼`、`Dify`、`Claude Code`
-- **Agent 编排范式** — `ReAct`、`Plan-and-Execute`、`Self-Reflection`、`Multi-Agent`、`A2A 协议`、`长任务状态管理`
-- **RAG 与检索** — `Milvus`、`BM25 + 向量混合召回`、`Rerank`、`语义缓存`、`MinerU 文档解析`、`上下文压缩`
-- **中间件** — `MySQL`、`PostgreSQL`、`Redis`、`Nacos`、`Kafka`、`RabbitMQ`、`高并发治理`
-- **全栈与工程化** — `Java`、`Python`、`Golang`、`TypeScript`、`Spring / SpringBoot`、`Netty`、`MyBatis`、`Dubbo`、`OpenFeign`、`FastAPI`、`SqlModel`、`Kitex`、`Hertz`、`Vue`、`React`、`NextJS`
-- **模型与理论** — `Prompt / Context / Harness Engineering`、`Memory管理`、`Transformer`、`KV-Cache / Prompt-Cache`、`MoE`
 
-Full experience and skill panel: [erywim.github.io/about](https://erywim.github.io/about/)
 
-</details>
-
-## 🚀 Featured Projects
-
-### [pi-amadeus](https://github.com/erywim/pi-amadeus)
-
-A personal AI assistant built on Pi Agent, connecting real-time voice, Live2D, desktop, and Feishu into one conversation system.
-
-`TypeScript` · `Electron` · `React` · `PostgreSQL`
-
-### [erywim.github.io](https://erywim.github.io/)
-
-A pixel-RPG personal site for notes, experiments, and things I build.
-
-`Astro` · `TypeScript`
-
-[Live site](https://erywim.github.io/) · [Source](https://github.com/erywim/erywim.github.io)
 
 ## 📊 GitHub Stats
 
@@ -105,20 +83,10 @@ A pixel-RPG personal site for notes, experiments, and things I build.
   </a>
 </p>
 
-## 🐍 Contribution Snake
-
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake.svg">
     <img src="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake.svg" alt="Animated contribution snake" width="840">
   </picture>
-</p>
-
-## 🤝 Let's Connect
-
-<p align="center">
-  <a href="https://erywim.github.io/"><img src="https://img.shields.io/badge/Website-erywim.github.io-0EA5E9?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Personal website"></a>
-  <a href="mailto:erywim@163.com"><img src="https://img.shields.io/badge/Email-erywim%40163.com-EA4335?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email"></a>
-  <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
 </p>
