@@ -48,7 +48,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - GitHub 会过滤内联 `<svg>`、`<script>`、`<style>`、`<iframe>` 和自定义样式。图片必须走仓库内的独立 `.svg` 文件。
 - `<img>` 加载的 SVG 是独立图片文档。GitHub raw 的 CSP 允许 SVG 内联样式与动画，但禁止外部字体、外部图片、脚本或 `currentColor` 依赖。
 - Hero 使用 SMIL 动画，目前在 Chrome 中通过真实 GitHub 页面验证过打字和扫描线动效。
-- 右侧插画使用普通 `<img align="right">` 浮动；`#gh-light-mode-only` / `#gh-dark-mode-only` 负责主题切换。桌面端宽度为 350，手机端会被 `max-width: 100%` 限制为整行。
+- 右侧插画使用普通 `<img align="right" width="45%">` 浮动；`#gh-light-mode-only` / `#gh-dark-mode-only` 负责主题切换。
+- 插画使用与 GitHub 页面一致的纯色底（浅色 `#FFFFFF`、深色 `#0D1117`，无 alpha），覆盖 `h2` 的整行下边框，避免分割线透过透明区域。
 - 图片浮动结束后使用 `<br clear="right" />` 清除浮动，避免影响 GitHub Stats。
 - 外部统计卡依赖第三方服务，可能被 Camo 缓存或短时不可用；不要让它们成为核心信息的唯一来源。
 - 贡献蛇由 `.github/workflows/snake.yml` 生成到 `output` 分支，README 通过 raw URL 读取，不要手写或提交生成结果。
