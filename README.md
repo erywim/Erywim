@@ -16,7 +16,7 @@
 <img align="right" width="45%" src="assets/chibi-peek-light.png#gh-light-mode-only" alt="Q版角色">
 <img align="right" width="45%" src="assets/chibi-peek-dark.png#gh-dark-mode-only" alt="Q版角色">
 
-> *« Je pense, donc je suis. »*
+> *「 Je pense, donc je suis. 」*
 
 
 ## 👋 About Me
