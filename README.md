@@ -1,81 +1,71 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-    <img src="assets/hero-light.svg" alt="Erywim — AI 全栈工程师" width="840">
-  </picture>
+  <img src="assets/hero.svg" alt="Hi, I'm Erywim — AI Full-Stack Engineer building agent systems, RAG pipelines, and LLM applications" width="840">
 </p>
 
 <p align="center">
-  <strong>把模型能力，做成能用的产品。</strong><br>
-  AI 全栈工程师 · Agent 应用方向
+  <strong>AI Full-Stack Engineer · Agent Systems / RAG / LLM</strong><br>
+  Turning model capabilities into products that hold up in production.
 </p>
 
 <p align="center">
-  <a href="https://erywim.github.io/">个人站</a> ·
-  <a href="https://erywim.github.io/blog/">技术笔记</a> ·
-  <a href="mailto:erywim@163.com">Email</a>
+  <a href="https://erywim.github.io/"><img src="https://img.shields.io/badge/Website-erywim.github.io-0EA5E9?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Personal website"></a>
+  <a href="mailto:erywim@163.com"><img src="https://img.shields.io/badge/Email-erywim%40163.com-EA4335?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email"></a>
+  <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
 </p>
 
----
+## 👋 About Me
 
-## NOW / 现在
+I'm an AI full-stack engineer focused on turning LLM capabilities into products that hold up in production. I work across agent orchestration, retrieval, backend systems, and multi-platform interaction.
 
-- **在做** [pi-amadeus](https://github.com/erywim/pi-amadeus)：基于 Pi Agent 的个人助手，正在打通实时语音、Live2D 与多端对话。
-- **在学** 深度学习基础；读 Claude Code / Hermes 的 Agent 源码。
-- **关注** 长任务状态管理、工具调用可靠性、记忆与评测。
-- **可聊** Agent 工程、RAG、Java / TypeScript，以及动漫、摄影和游戏。
+- 🔭 Currently building [pi-amadeus](https://github.com/erywim/pi-amadeus), a personal assistant built on Pi Agent.
+- 💼 Previously worked on AI full-stack (Agent) projects and Java backend systems.
+- 🌱 Learning deep learning fundamentals and reading agent internals such as Claude Code and Hermes.
+- 💬 Ask me about Agent engineering, RAG, Java, TypeScript, and shipping AI features end to end.
+- 🎮 Off-screen: anime, photography, games, and turning random ideas into working software.
 
-## PROJECTS / 项目
+## 🛠️ Tech Stack
 
-### [pi-amadeus](https://github.com/erywim/pi-amadeus) · 进行中
+### AI & Agents
 
-基于 Pi Agent 的个人助手，把实时语音、Live2D 和飞书接进同一个对话系统。
+<p>
+  <img src="https://img.shields.io/badge/Spring_AI-6DB33F?style=for-the-badge&amp;logo=spring&amp;logoColor=white" alt="Spring AI">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&amp;logo=langchain&amp;logoColor=white" alt="LangChain">
+  <img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge" alt="LangGraph">
+  <img src="https://img.shields.io/badge/MCP-3B82F6?style=for-the-badge" alt="MCP">
+  <img src="https://img.shields.io/badge/Milvus-00A1EA?style=for-the-badge&amp;logo=milvus&amp;logoColor=white" alt="Milvus">
+  <img src="https://img.shields.io/badge/Dify-1C64F2?style=for-the-badge&amp;logo=dify&amp;logoColor=white" alt="Dify">
+  <img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&amp;logo=anthropic&amp;logoColor=white" alt="Claude Code">
+</p>
 
-`TypeScript` · `Electron` · `React` · `PostgreSQL`
+### Backend & Data
 
-### [erywim.github.io](https://erywim.github.io/) · 维护中
+<p>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&amp;logo=openjdk&amp;logoColor=white" alt="Java">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&amp;logo=go&amp;logoColor=white" alt="Go">
+  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&amp;logo=springboot&amp;logoColor=white" alt="Spring Boot">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&amp;logo=fastapi&amp;logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&amp;logo=postgresql&amp;logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&amp;logo=redis&amp;logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&amp;logo=apachekafka&amp;logoColor=white" alt="Kafka">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&amp;logo=mysql&amp;logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&amp;logo=rabbitmq&amp;logoColor=white" alt="RabbitMQ">
+</p>
 
-用像素 RPG 的方式记录技术、生活和实验。
+### Frontend & Interface
 
-`Astro` · `TypeScript`
-
-[Website →](https://erywim.github.io/) · [Source →](https://github.com/erywim/erywim.github.io)
-
-## TRACK RECORD / 经历
-
-- **2025.09 — 2026.08** 某 AI 科技公司 · AI 全栈（Agent 方向）<br>志愿填报 Agent、LLM 网关。
-- **2023.03 — 2025.08** 某通信行业软件公司 · Java 开发 → 项目经理
-- **2019.09 — 2023.07** 软件工程
-
-## WHAT I DO / 做什么
-
-### Agent 应用与编排
-
-拆任务、接工具、管状态，把开放任务跑通。
-
-### RAG 与上下文工程
-
-从解析、召回、重排到压缩，搭好检索链路。
-
-### 实时交互与多端
-
-把文字、语音、Live2D 和桌面 / 飞书接进同一个对话体验。
-
-### 工程实现与交付
-
-Java / Python / TypeScript 落地，从 API、数据到界面都能接。
-
-## TOOLBOX / 技术栈
-
-- **Agent** — `Spring AI` `LangChain4j` `LangGraph` `MCP`
-- **Retrieval** — `Milvus` `BM25 + Dense` `Rerank` `MinerU`
-- **Engineering** — `Java` `Python` `TypeScript` `Spring Boot` `FastAPI` `PostgreSQL` `Redis` `Kafka`
-- **Interface** — `Vue` `React` `NextJS`
-- **Model basics** — `Prompt / Context / Harness Engineering` `Transformer` `KV-Cache` `MoE`
+<p>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&amp;logo=vuedotjs&amp;logoColor=white" alt="Vue">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&amp;logo=nextdotjs&amp;logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/SSE-0F766E?style=for-the-badge" alt="SSE">
+  <img src="https://img.shields.io/badge/Electron-47848F?style=for-the-badge&amp;logo=electron&amp;logoColor=white" alt="Electron">
+  <img src="https://img.shields.io/badge/Live2D-E58AB8?style=for-the-badge" alt="Live2D">
+</p>
 
 <details>
-<summary><strong>完整技术栈 · 六类</strong></summary>
+<summary><strong>Full tech stack (50 items)</strong></summary>
 
 - **Agent 应用框架** — `Spring AI`、`LangChain4j`、`LangChain`、`LangGraph`、`SSE`、`Function Calling`、`MCP`、`Skill / SOP 提炼`、`Dify`、`Claude Code`
 - **Agent 编排范式** — `ReAct`、`Plan-and-Execute`、`Self-Reflection`、`Multi-Agent`、`A2A 协议`、`长任务状态管理`
@@ -84,18 +74,51 @@ Java / Python / TypeScript 落地，从 API、数据到界面都能接。
 - **全栈与工程化** — `Java`、`Python`、`Golang`、`TypeScript`、`Spring / SpringBoot`、`Netty`、`MyBatis`、`Dubbo`、`OpenFeign`、`FastAPI`、`SqlModel`、`Kitex`、`Hertz`、`Vue`、`React`、`NextJS`
 - **模型与理论** — `Prompt / Context / Harness Engineering`、`Memory管理`、`Transformer`、`KV-Cache / Prompt-Cache`、`MoE`
 
-完整经历与技能面板：[erywim.github.io/about](https://erywim.github.io/about/)
+Full experience and skill panel: [erywim.github.io/about](https://erywim.github.io/about/)
 
 </details>
 
-## OFF-SCREEN / 日常
+## 🚀 Featured Projects
 
-动漫、摄影、游戏。喜欢把想法做成能跑的东西，也偶尔把看过的番、拍过的照片和写过的代码，整理进自己的 RPG 世界。
+### [pi-amadeus](https://github.com/erywim/pi-amadeus)
 
-[旅行日志 →](https://erywim.github.io/logs) · [灵感火花 →](https://erywim.github.io/ideas)
+A personal AI assistant built on Pi Agent, connecting real-time voice, Live2D, desktop, and Feishu into one conversation system.
 
-## CONTACT / 联系
+`TypeScript` · `Electron` · `React` · `PostgreSQL`
 
-如果你也在做 Agent、RAG 或实时 AI 应用，欢迎来聊。
+### [erywim.github.io](https://erywim.github.io/)
 
-[个人站](https://erywim.github.io/) · [GitHub](https://github.com/erywim) · [Email](mailto:erywim@163.com)
+A pixel-RPG personal site for notes, experiments, and things I build.
+
+`Astro` · `TypeScript`
+
+[Live site](https://erywim.github.io/) · [Source](https://github.com/erywim/erywim.github.io)
+
+## 📊 GitHub Stats
+
+<p align="center">
+  <a href="https://github.com/erywim">
+    <img width="400" src="https://github-readme-stats.vercel.app/api?username=erywim&amp;show_icons=true&amp;theme=tokyonight&amp;hide_border=true&amp;include_all_commits=true&amp;count_private=true&amp;rank_icon=github" alt="Erywim's GitHub stats">
+  </a>
+  <a href="https://github.com/erywim">
+    <img width="400" src="https://streak-stats.demolab.com?user=erywim&amp;theme=tokyonight&amp;hide_border=true" alt="Erywim's GitHub streak">
+  </a>
+</p>
+
+## 🐍 Contribution Snake
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake.svg">
+    <img src="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake.svg" alt="Animated contribution snake" width="840">
+  </picture>
+</p>
+
+## 🤝 Let's Connect
+
+<p align="center">
+  <a href="https://erywim.github.io/"><img src="https://img.shields.io/badge/Website-erywim.github.io-0EA5E9?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Personal website"></a>
+  <a href="mailto:erywim@163.com"><img src="https://img.shields.io/badge/Email-erywim%40163.com-EA4335?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" alt="Email"></a>
+  <a href="https://github.com/erywim"><img src="https://img.shields.io/badge/GitHub-erywim-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
+</p>

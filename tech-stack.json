@@ -1,7 +1,9 @@
 {
   "profile": {
-    "name": "ERYWIM",
-    "role": "AI 全栈工程师"
+    "name": "Erywim",
+    "greeting": "Hi, I'm Erywim",
+    "typing": "AI Full-Stack Engineer",
+    "subline": "Agent Systems · RAG · LLM Applications"
   },
   "techStack": [
     {
