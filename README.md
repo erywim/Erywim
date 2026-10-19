@@ -69,9 +69,6 @@ I'm an AI full-stack engineer focused on turning LLM capabilities into products 
 
 <br clear="right" />
 
-
-
-
 ## 📊 GitHub Stats
 
 <p align="center">
