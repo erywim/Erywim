@@ -11,6 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `README.md`：常规 GitHub Profile 布局，包含欢迎横幅、简介、右侧跨行插画、技术徽章、GitHub 数据和贡献蛇。
 - `assets/hero.svg`：自包含的深色动态横幅，带打字、扫描线、浮动粒子和终端卡片动效。
 - `assets/chibi-peek-light.png`、`assets/chibi-peek-dark.png`：右侧跨行 Q 版人物插画，分别适配 GitHub 浅色和深色主题。
+- `assets/character-bottom-left-light.png`、`assets/character-bottom-left-dark.png`：贡献蛇下方的左下角 Q 版角色，分别适配浅色和深色主题。
 - `tech-stack.json`：Hero 文案与完整技术栈的备查数据。
 - `scripts/generate.py`：生成 `assets/hero.svg`。
 - `scripts/check_readme.py`：检查 README 的本地图片和图片 alt。

@@ -95,3 +95,8 @@ I'm an AI full-stack engineer focused on turning LLM capabilities into products 
     <img src="https://raw.githubusercontent.com/erywim/Erywim/output/github-contribution-grid-snake.svg" alt="Animated contribution snake" width="840">
   </picture>
 </p>
+
+<p align="left">
+  <img width="200" src="assets/character-bottom-left-light.png#gh-light-mode-only" alt="Q版角色从页面左下角探出头">
+  <img width="200" src="assets/character-bottom-left-dark.png#gh-dark-mode-only" alt="Q版角色从页面左下角探出头">
+</p>
